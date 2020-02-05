@@ -1,4 +1,5 @@
 import pandas
+import os
 
 
 def to_usd(my_price):
@@ -16,8 +17,13 @@ def to_usd(my_price):
 print("READING GRADEBOOK CSV FILE...")
 
 # if CSV file in same directory as this filepath script:
-csv_filepath = "gradebook.csv"
+    # csv_filepath = "gradebook.csv"
+
+# if CSV file not in same directory as this filepath script (i.e. separate repo folder)
+csv_filepath = os.path.join(os.path.dirname(__file__), "data", "gradebook.csv")
 grades = pandas.read_csv(csv_filepath)
+print("FILEPATH:", os.path.abspath(csv_filepath))
+
 print("GRADES:", type(grades))
 print(grades.head())
 
@@ -26,4 +32,4 @@ print(grades.head())
 
 
 # csv_filepath = "/path/to/jeter_stats.csv"
-#stats = pandas.read_csv(csv_filepath)
+# stats = pandas.read_csv(csv_filepath)
