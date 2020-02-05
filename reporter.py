@@ -22,10 +22,23 @@ print("READING GRADEBOOK CSV FILE...")
 # if CSV file not in same directory as this filepath script (i.e. separate repo folder)
 csv_filepath = os.path.join(os.path.dirname(__file__), "data", "gradebook.csv")
 grades = pandas.read_csv(csv_filepath)
-print("FILEPATH:", os.path.abspath(csv_filepath))
+#print("FILEPATH:", os.path.abspath(csv_filepath))
 
-print("GRADES:", type(grades))
-print(grades.head())
+# print("GRADES:", type(grades))
+# print(grades.head())
+
+id_col = grades["student_id"]
+grade_col = grades["final_grade"]
+avg_grade = grade_col.mean()
+
+my_grades = []
+for index, row in grades.iterrows():
+    print(index)
+    print(row["final_grade"])
+    print("----------")
+    my_grades.append(row["final_grade"])
+print("AVG GRADE:", avg_grade)
+
 
 
 
